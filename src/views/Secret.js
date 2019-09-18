@@ -9,7 +9,7 @@ import Container from '@material-ui/core/Container';
 import Navbar from "../components/Navbar.js";
 import QRCode from "qrcode.react";
 
-class IssuePengurus extends Component {
+class Secret extends Component {
 
     constructor(props) {
         super(props);
@@ -18,7 +18,7 @@ class IssuePengurus extends Component {
             delay: 300,
             result: "No result",
             showQrCode: null,
-            issue_key: null
+            presensi_key: null
         };
 
         this.onClickIssue = this.onClickIssue.bind(this);
@@ -33,17 +33,17 @@ class IssuePengurus extends Component {
         const put_data = {
             api_key: process.env.REACT_APP_API_KEY,
             password: this.textInput.current.value,
-            secret_name: "issue_key",
+            secret_name: "presensi_key",
             request_type: "put"
         };
 
-        axios.post(process.env.REACT_APP_BASE_URL + '/secret', put_data)
+        axios.post(process.env.REACT_APP_BASE_URL + `/secret`, put_data)
             .then(res => {
                 // alert(res.data.issue_key);
 
                 this.setState({
                     showQrCode: true,
-                    issue_key: res.data.issue_key
+                    presensi_key: res.data.presensi_key
                 });
 
                 localStorage.setItem("password", this.textInput.current.value);
@@ -54,14 +54,12 @@ class IssuePengurus extends Component {
 
     onClickGetQR(){
 
-        axios.get(process.env.REACT_APP_BASE_URL + `/secret?api_key=${process.env.REACT_APP_API_KEY}&password=${this.textInput.current.value}&secret_name=issue_key`)
+        axios.get(process.env.REACT_APP_BASE_URL + `/secret?api_key=${process.env.REACT_APP_API_KEY}&password=${this.textInput.current.value}&secret_name=presensi_key`)
             .then(res => {
-
-                // alert(res.data.issue_key);
 
                 this.setState({
                     showQrCode: true,
-                    issue_key: res.data.issue_key
+                    presensi_key: res.data.presensi_key
                 })
             })
             .catch(error => alert(error.response.data.message));
@@ -95,7 +93,7 @@ class IssuePengurus extends Component {
 
                     <div>
                         {/*https://www.npmjs.com/package/qrcode.react*/}
-                        {this.state.showQrCode? <QRCode value={this.state.issue_key} size="100%" bgColor="#FFFFFF" level='H' includeMargin="true" renderAs="svg"/> : null}
+                        {this.state.showQrCode? <QRCode value={this.state.presensi_key} size="100%" bgColor="#FFFFFF" level='H' includeMargin="true" renderAs="svg"/> : null}
                     </div>
 
 
@@ -142,6 +140,6 @@ class IssuePengurus extends Component {
     }
 }
 
-export default IssuePengurus;
+export default Secret;
 
 

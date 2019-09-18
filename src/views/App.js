@@ -23,19 +23,18 @@ class App extends Component {
             //     result: data
             // });
 
-            alert(data);
-
             const post_data = {
                 api_key: process.env.REACT_APP_API_KEY,
                 nim: localStorage.getItem("nim"),
                 uniq_key: localStorage.getItem("uniq_key"),
-                presensi_key: data
+                presensi_key: data,
+                request_type: "post",
             };
 
-            // presensi_key => "9ba656b73180a573667afa527b759213aa264f85"
+            // presensi_key => "d5c91dca1d8baf439b0f12843443a6a12757fb6f"
             // localStorage.setItem("nim", "175150200111040");
 
-            axios.post(""+process.env.REACT_APP_BASE_URL+"/presensi_api/presensi", post_data)
+            axios.post(""+process.env.REACT_APP_BASE_URL+"/presensi", post_data)
                 .then(res => alert(res.data.message))
                 .catch(error => alert(error.response.data.message));
         }
@@ -47,14 +46,12 @@ class App extends Component {
 
     render() {
 
-        const value = "http://facebook.github.io/react/";
-
         return (
             <div className="App">
 
                 <Navbar/>
 
-                <Container maxWidth="xs" style={{marginTop: "100px"}}>
+                <Container maxWidth="sm" style={{marginTop: "30px"}}>
                     <QrReader
                         delay={this.state.delay}
                         onError={this.handleError}

@@ -7,6 +7,7 @@ import './css/index.css';
 import App from './views/App';
 import IssuePengurus from './views/IssuePengurus';
 import Register from './views/Register';
+import Secret from './views/Secret';
 
 // ReactDOM.render(<App />, document.getElementById('root'));
 
@@ -15,9 +16,11 @@ ReactDOM.render(
         <Switch>
 
             <Route path="/" exact render={props => <App {...props} />}/>
-            <Route path="/issue" exact render={props => <IssuePengurus {...props} />}/>
+            <Route path="/presensi" exact render={props => <App {...props} />}/>
             <Route path="/register" exact render={props => <Register {...props} />}/>
-            <Redirect to="/login"/>
+            <Route path="/issue" exact render={props => <IssuePengurus {...props} />}/>
+            <Route path="/secret" exact render={props => <Secret {...props} />}/>
+            {/*<Redirect to="/login"/>*/}
 
         </Switch>
     </BrowserRouter>,

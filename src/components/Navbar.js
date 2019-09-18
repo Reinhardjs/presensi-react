@@ -11,7 +11,6 @@ import Button from "@material-ui/core/Button/Button";
 import Toolbar from '@material-ui/core/Toolbar';
 import {Link} from 'react-router-dom';
 
-
 const CustomMenu = () => {
 
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -29,12 +28,17 @@ const CustomMenu = () => {
         setAnchorEl(null);
     }
 
+
     return (
         <header>
 
-            <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick} style={{color: "#FFF"}}>
-                <MenuIcon/>
-            </Button>
+            <div style={{display: "flex"}}>
+                <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick} style={{color: "#FFF"}}>
+                    <MenuIcon/>
+                </Button>
+
+
+            </div>
 
             <Menu
                 id="simple-menu"
@@ -61,6 +65,12 @@ const CustomMenu = () => {
                         Issue
                     </MenuItem>
                 </Link>
+
+                <Link to="/secret" style={textMenuStyle}>
+                    <MenuItem onClick={handleClose}>
+                        Secret
+                    </MenuItem>
+                </Link>
             </Menu>
 
         </header>
@@ -75,12 +85,34 @@ class Navbar extends Component {
 
     render() {
 
+        let toolbarTitle = null;
+
+        switch (window.location.pathname) {
+            case "/":
+                toolbarTitle = "PRESENSI HMIF";
+                break;
+            case "/presensi":
+                toolbarTitle = "PRESENSI HMIF";
+                break;
+            case "/register":
+                toolbarTitle = "REGISTRASI NIM ke HP";
+                break;
+            case "/issue":
+                toolbarTitle = "QRCODE REGISTRASI";
+                break;
+            case "/secret":
+                toolbarTitle = "QRCODE PRESENSI";
+                break;
+        }
+
         return (
             <AppBar position="static">
                 <Toolbar>
                     <IconButton edge="start" color="inherit" aria-label="menu">
                         <CustomMenu/>
                     </IconButton>
+
+                    <div style={{fontSize: "16px", marginTop: "-5px"}}>{toolbarTitle}</div>
                     {/*<Typography variant="h6">*/}
                     {/*News*/}
                     {/*</Typography>*/}

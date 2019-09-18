@@ -1,6 +1,5 @@
 import {Component} from "react";
 import axios from "axios";
-import Button from "@material-ui/core/Button/Button";
 import React from "react";
 import QrReader from "react-qr-reader";
 import Container from "@material-ui/core/Container/Container";
@@ -15,24 +14,32 @@ class Register extends Component {
             delay: 300,
             result: "No result"
         };
+
+        this.textInput = React.createRef();
         this.handleScan = this.handleScan.bind(this);
+
     }
 
     handleScan(data) {
         if (data) {
-            this.setState({
-                result: data
-            });
+            // this.setState({
+            //     result: data
+            // });
 
-            const data = {
+            const put_data = {
                 api_key: process.env.REACT_APP_API_KEY,
-                nim: 175150200111040,
-                issue_key: this.state.result.data.issue_key,
+                nim: this.textInput.current.value,
+                issue_key: data,
+                request_type: "put"
             };
 
-            axios.put(process.env.REACT_APP_BASE_URL + "/presensi_api/pengurus", data)
-                .then(res => alert(res.data.message))
-                .catch(error => alert(JSON.stringify(error.message)));
+            axios.post(process.env.REACT_APP_BASE_URL + "/pengurus", put_data)
+                .then(res => {
+                    alert(res.data.message);
+                    localStorage.setItem("nim", this.textInput.current.value);
+                    localStorage.setItem("uniq_key", res.data.uniq_key);
+                })
+                .catch(error => alert(error.response.data.message));
         }
     }
 
@@ -48,7 +55,15 @@ class Register extends Component {
 
                 <Navbar/>
 
-                <Container maxWidth="sm" style={{marginTop: "100px"}}>
+                <Container maxWidth="sm" style={{marginTop: "30px"}}>
+
+                    <QrReader
+                        delay={this.state.delay}
+                        onError={this.handleError}
+                        onScan={this.handleScan}
+                        style={{width: "100%"}}
+                    />
+                    {/*<p>{this.state.result}</p>*/}
 
                     <TextField
                         id="standard-name"
@@ -62,14 +77,6 @@ class Register extends Component {
                         //     this.setState({ nimValue: value });
                         // }}
                     />
-
-                    <QrReader
-                        delay={this.state.delay}
-                        onError={this.handleError}
-                        onScan={this.handleScan}
-                        style={{width: "100%"}}
-                    />
-                    <p>{this.state.result}</p>
                 </Container>
 
             </div>

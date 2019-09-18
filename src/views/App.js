@@ -23,6 +23,8 @@ class App extends Component {
             //     result: data
             // });
 
+            alert(data);
+
             const post_data = {
                 api_key: process.env.REACT_APP_API_KEY,
                 nim: localStorage.getItem("nim"),

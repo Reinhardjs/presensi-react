@@ -37,7 +37,7 @@ class Secret extends Component {
             request_type: "put"
         };
 
-        axios.post(process.env.REACT_APP_BASE_URL + `/secret`, put_data)
+        axios.get(process.env.REACT_APP_BASE_URL + `/secret`, {params: put_data})
             .then(res => {
                 // alert(res.data.issue_key);
 
@@ -54,7 +54,14 @@ class Secret extends Component {
 
     onClickGetQR(){
 
-        axios.get(process.env.REACT_APP_BASE_URL + `/secret?api_key=${process.env.REACT_APP_API_KEY}&password=${this.textInput.current.value}&secret_name=presensi_key`)
+        const get_data = {
+            api_key: process.env.REACT_APP_API_KEY,
+            password: this.textInput.current.value,
+            secret_name: "presensi_key",
+            request_type: "get",
+        };
+
+        axios.get(process.env.REACT_APP_BASE_URL + `/secret`, {params: get_data})
             .then(res => {
 
                 this.setState({

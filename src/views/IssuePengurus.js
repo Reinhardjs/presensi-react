@@ -9,6 +9,8 @@ import Container from '@material-ui/core/Container';
 import Navbar from "../components/Navbar.js";
 import QRCode from "qrcode.react";
 
+import request from 'superagent';
+
 class IssuePengurus extends Component {
 
     constructor(props) {
@@ -37,7 +39,7 @@ class IssuePengurus extends Component {
             request_type: "put"
         };
 
-        axios.post(process.env.REACT_APP_BASE_URL + '/secret', put_data)
+        axios.get(process.env.REACT_APP_BASE_URL + `/secret`, {params: put_data})
             .then(res => {
                 // alert(res.data.issue_key);
 
@@ -54,7 +56,14 @@ class IssuePengurus extends Component {
 
     onClickGetQR(){
 
-        axios.get(process.env.REACT_APP_BASE_URL + `/secret?api_key=${process.env.REACT_APP_API_KEY}&password=${this.textInput.current.value}&secret_name=issue_key`)
+        const get_data = {
+            api_key: process.env.REACT_APP_API_KEY,
+            password: this.textInput.current.value,
+            secret_name: "issue_key",
+            request_type: "get",
+        };
+
+        axios.get(process.env.REACT_APP_BASE_URL + `/secret`, {params: get_data})
             .then(res => {
 
                 // alert(res.data.issue_key);

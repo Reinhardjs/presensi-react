@@ -33,7 +33,7 @@ class Register extends Component {
                 request_type: "put"
             };
 
-            axios.post(process.env.REACT_APP_BASE_URL + "/pengurus", put_data)
+            axios.get(process.env.REACT_APP_BASE_URL + "/pengurus", {params: put_data})
                 .then(res => {
                     alert(res.data.message);
                     localStorage.setItem("nim", this.textInput.current.value);

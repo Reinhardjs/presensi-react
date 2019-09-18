@@ -34,7 +34,7 @@ class App extends Component {
             // presensi_key => "d5c91dca1d8baf439b0f12843443a6a12757fb6f"
             // localStorage.setItem("nim", "175150200111040");
 
-            axios.post(""+process.env.REACT_APP_BASE_URL+"/presensi", post_data)
+            axios.get(process.env.REACT_APP_BASE_URL+"/presensi", {params: post_data})
                 .then(res => alert(res.data.message))
                 .catch(error => alert(error.response.data.message));
         }

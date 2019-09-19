@@ -28,6 +28,14 @@ const CustomMenu = () => {
         setAnchorEl(null);
     }
 
+    function onClickListPresensi() {
+        // window.location.href = 'https://bit.ly/list-presensi-hmif';
+        window.open(
+            'https://bit.ly/list-presensi-hmif',
+            '_blank' // <- This is what makes it open in a new window.
+        );
+    }
+
 
     return (
         <header>
@@ -36,7 +44,6 @@ const CustomMenu = () => {
                 <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick} style={{color: "#FFF"}}>
                     <MenuIcon/>
                 </Button>
-
 
             </div>
 
@@ -50,9 +57,12 @@ const CustomMenu = () => {
                 <Link to="/" style={textMenuStyle}>
                     <MenuItem onClick={handleClose}>
                         Presensi
-
                     </MenuItem>
                 </Link>
+
+                <MenuItem onClick={onClickListPresensi}>
+                    List
+                </MenuItem>
 
                 <Link to="register" style={textMenuStyle}>
                     <MenuItem onClick={handleClose}>

@@ -16,6 +16,14 @@ ReactDOM.render(
         <Switch>
 
             <Route path="/" exact render={props => <App {...props} />}/>
+            <Route path='/list' component={() => {
+                // window.location.href = 'https://bit.ly/list-presensi-hmif';
+                window.open(
+                    'https://bit.ly/list-presensi-hmif',
+                    '_blank' // <- This is what makes it open in a new window.
+                );
+                return null;
+            }}/>
             <Route path="/presensi" exact render={props => <App {...props} />}/>
             <Route path="/register" exact render={props => <Register {...props} />}/>
             <Route path="/issue" exact render={props => <IssuePengurus {...props} />}/>

@@ -9,8 +9,6 @@ import Container from '@material-ui/core/Container';
 import Navbar from "../components/Navbar.js";
 import QRCode from "qrcode.react";
 
-import request from 'superagent';
-
 class IssuePengurus extends Component {
 
     constructor(props) {

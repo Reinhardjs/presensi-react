@@ -48,17 +48,18 @@ self.addEventListener('install', function (event) {
 
 
 // Here we intercept request and serve up the matching files
-// self.addEventListener('fetch', (e) => {
-//     e.respondWith(
-//         caches.match(e.request).then((r) => {
-//             console.log('[Service Worker] Fetching resource: ' + e.request.url);
-//             return r || fetch(e.request).then((response) => {
-//                 return caches.open(CACHE_NAME).then((cache) => {
-//                     console.log('[Service Worker] Caching new resource: ' + e.request.url);
-//                     cache.put(e.request, response.clone());
-//                     return response;
-//                 });
-//             });
-//         })
-//     );
-// });
+self.addEventListener('fetch', (e) => {
+    e.respondWith(
+        caches.match(e.request).then((r) => {
+            console.log('[Service Worker] Fetching resource: ' + e.request.url);
+            return r || fetch(e.request);
+        // .then((response) => {
+        //         return caches.open(CACHE_NAME).then((cache) => {
+        //             console.log('[Service Worker] Caching new resource: ' + e.request.url);
+        //             cache.put(e.request, response.clone());
+        //             return response;
+        //         });
+        //     });
+        })
+    );
+});

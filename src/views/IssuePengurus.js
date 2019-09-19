@@ -15,7 +15,7 @@ class IssuePengurus extends Component {
         super(props);
 
         this.state = {
-            delay: 300,
+            delay: 1000,
             result: "No result",
             showQrCode: null,
             issue_key: null

@@ -11,7 +11,7 @@ class Register extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            delay: 300,
+            delay: 1000,
             result: "No result"
         };
 

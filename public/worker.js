@@ -1,7 +1,7 @@
 // v 04/09/2019 nice update 15/09/2019 - 20:52
 // Flag for enabling cache in production
 var doCache = true;
-var CACHE_NAME = 'pwa-app-cache';
+var CACHE_NAME = 'presensi-hmif-pwa-app-cache';
 
 // Delete old caches
 self.addEventListener('activate', event => {
@@ -47,7 +47,7 @@ self.addEventListener('install', function (event) {
 });
 
 
-Here we intercept request and serve up the matching files
+// Here we intercept request and serve up the matching files
 self.addEventListener('fetch', (e) => {
     e.respondWith(
         caches.match(e.request).then((r) => {

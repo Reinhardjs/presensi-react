@@ -60,10 +60,6 @@ const CustomMenu = () => {
                     </MenuItem>
                 </Link>
 
-                <MenuItem onClick={onClickListPresensi}>
-                    List
-                </MenuItem>
-
                 <Link to="register" style={textMenuStyle}>
                     <MenuItem onClick={handleClose}>
                         Register
@@ -81,6 +77,10 @@ const CustomMenu = () => {
                         Secret
                     </MenuItem>
                 </Link>
+
+                <MenuItem onClick={onClickListPresensi}>
+                    List
+                </MenuItem>
             </Menu>
 
         </header>

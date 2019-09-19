@@ -16,6 +16,7 @@ class IssuePengurus extends Component {
 
         this.state = {
             delay: 1000,
+            resolution: 1000,
             result: "No result",
             showQrCode: null,
             issue_key: null

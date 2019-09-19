@@ -12,6 +12,7 @@ class Register extends Component {
         super(props);
         this.state = {
             delay: 1000,
+            resolution: 1000,
             result: "No result"
         };
 
@@ -59,6 +60,7 @@ class Register extends Component {
 
                     <QrReader
                         delay={this.state.delay}
+                        resolution={this.state.resolution}
                         onError={this.handleError}
                         onScan={this.handleScan}
                         style={{width: "100%"}}

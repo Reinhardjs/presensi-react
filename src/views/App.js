@@ -12,6 +12,7 @@ class App extends Component {
         super(props);
         this.state = {
             delay: 1000,
+            resolution: 1000,
             result: "No result"
         };
         this.handleScan = this.handleScan.bind(this);
@@ -54,6 +55,7 @@ class App extends Component {
                 <Container maxWidth="sm" style={{marginTop: "30px"}}>
                     <QrReader
                         delay={this.state.delay}
+                        resolution={this.state.resolution}
                         onError={this.handleError}
                         onScan={this.handleScan}
                         style={{width: "100%"}}

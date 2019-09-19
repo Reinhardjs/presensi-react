@@ -1,6 +1,6 @@
 // v 04/09/2019 nice update 15/09/2019 - 20:52
 // Flag for enabling cache in production
-var doCache = false;
+var doCache = true;
 var CACHE_NAME = 'pwa-app-cache';
 
 // Delete old caches
@@ -32,6 +32,7 @@ self.addEventListener('install', function (event) {
                             const urlsToCache = [
                                 '/',
                                 '/index.html',
+                                '/logo-hmif.png',
                                 '/favicon.ico',
                                 '/manifest.json',
                             ];
@@ -46,18 +47,18 @@ self.addEventListener('install', function (event) {
 });
 
 
-// Here we intercept request and serve up the matching files
-// self.addEventListener('fetch', (e) => {
-//     e.respondWith(
-//         caches.match(e.request).then((r) => {
-//             console.log('[Service Worker] Fetching resource: ' + e.request.url);
-//             return r || fetch(e.request).then((response) => {
-//                 return caches.open(CACHE_NAME).then((cache) => {
-//                     console.log('[Service Worker] Caching new resource: ' + e.request.url);
-//                     cache.put(e.request, response.clone());
-//                     return response;
-//                 });
-//             });
-//         })
-//     );
-// });
+Here we intercept request and serve up the matching files
+self.addEventListener('fetch', (e) => {
+    e.respondWith(
+        caches.match(e.request).then((r) => {
+            console.log('[Service Worker] Fetching resource: ' + e.request.url);
+            return r || fetch(e.request).then((response) => {
+                return caches.open(CACHE_NAME).then((cache) => {
+                    console.log('[Service Worker] Caching new resource: ' + e.request.url);
+                    cache.put(e.request, response.clone());
+                    return response;
+                });
+            });
+        })
+    );
+});

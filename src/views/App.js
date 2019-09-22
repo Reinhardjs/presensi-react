@@ -97,9 +97,9 @@ class App extends Component {
                     />
                     <p>{this.presensi_key}</p>
 
-                    <Button variant="outlined" color="primary" onClick={this.openDialog}>
-                        Open alert dialog
-                    </Button>
+                    {/*<Button variant="outlined" color="primary" onClick={this.openDialog}>*/}
+                        {/*Open alert dialog*/}
+                    {/*</Button>*/}
                     <Dialog
                         open={this.state.isDialogOpen}
                         onClose={this.handleClose}

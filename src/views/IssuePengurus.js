@@ -70,7 +70,9 @@ class IssuePengurus extends Component {
                 this.setState({
                     showQrCode: true,
                     issue_key: res.data.issue_key
-                })
+                });
+
+                localStorage.setItem("password", this.textInput.current.value);
             })
             .catch(error => alert(error.response.data.message));
 

@@ -1,4 +1,4 @@
-// v 04/09/2019 nice update 22/09/2019
+// v 04/09/2019 nice update 22/09/2019 21:45
 // Flag for enabling cache in production
 var doCache = true;
 var CACHE_NAME = 'presensi-hmif-pwa-app-cache';
@@ -30,11 +30,6 @@ self.addEventListener('install', function (event) {
                         })
                         .then(assets => {
                             const urlsToCache = [
-                                '/',
-                                '/index.html',
-                                '/logo-hmif.png',
-                                '/favicon.ico',
-                                '/manifest.json',
                             ];
                             cache.addAll(urlsToCache);
                         })

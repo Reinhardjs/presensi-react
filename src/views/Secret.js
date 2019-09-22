@@ -67,7 +67,9 @@ class Secret extends Component {
                 this.setState({
                     showQrCode: true,
                     presensi_key: res.data.presensi_key
-                })
+                });
+
+                localStorage.setItem("password", this.textInput.current.value);
             })
             .catch(error => alert(error.response.data.message));
 

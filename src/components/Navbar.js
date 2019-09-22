@@ -68,13 +68,13 @@ const CustomMenu = () => {
 
                 <Link to="/issue" style={textMenuStyle}>
                     <MenuItem onClick={handleClose}>
-                        Issue
+                        QR Register
                     </MenuItem>
                 </Link>
 
                 <Link to="/secret" style={textMenuStyle}>
                     <MenuItem onClick={handleClose}>
-                        Secret
+                        QR Presensi
                     </MenuItem>
                 </Link>
 
@@ -108,10 +108,10 @@ class Navbar extends Component {
                 toolbarTitle = "REGISTRASI NIM ke HP";
                 break;
             case "/issue":
-                toolbarTitle = "QRCODE REGISTRASI";
+                toolbarTitle = "QR CODE REGISTRASI";
                 break;
             case "/secret":
-                toolbarTitle = "QRCODE PRESENSI";
+                toolbarTitle = "QR CODE PRESENSI";
                 break;
         }
 

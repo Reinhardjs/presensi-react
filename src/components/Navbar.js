@@ -105,7 +105,7 @@ class Navbar extends Component {
                 toolbarTitle = "PRESENSI HMIF";
                 break;
             case "/register":
-                toolbarTitle = "REGISTRASI NIM ke HP";
+                toolbarTitle = "REGISTRASI HP";
                 break;
             case "/issue":
                 toolbarTitle = "QR CODE REGISTRASI";
